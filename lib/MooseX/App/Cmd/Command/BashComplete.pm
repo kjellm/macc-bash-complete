@@ -1,23 +1,14 @@
 package MooseX::App::Cmd::Command::BashComplete;
-
-use warnings;
-use strict;
-
+use Moose;
+extends 'MooseX::App::Cmd::Command';
 
 our $VERSION = '0.01';
 
+use List::MoreUtils qw(any none);
+use MooseX::Getopt;
 
 sub execute {
     my ($self, $opts, $args) = @_;
-
-    print <<'EOT';
-#!/bin/bash
-
-# Built with MooseX::App::Cmd::Command::BashComplete;
-
-GLOBAL_COMMANDS='help commands complete'
-
-EOT
 
     my @commands = $self->app->command_names;
 
@@ -33,11 +24,16 @@ EOT
 
     my $cmd_list = join ' ', keys %command_map;
 
+    my $package = __PACKAGE__;
+
     print <<"EOT";
+#!/bin/bash
 
-COMMANDS='$cmd_list'
+# Built with $package;
 
-_tvgu_help() {
+COMMANDS='help commands complete $cmd_list'
+
+_macc_help() {
     if [ \$COMP_CWORD = 2 ]; then
         _compreply "\$GLOBAL_COMMANDS \$COMMANDS"
     else
@@ -45,13 +41,12 @@ _tvgu_help() {
     fi
 }
 
-
-_tvgu_commands() {
+_macc_commands() {
     COMPREPLY=()
 }
 
 
-_tvgu_complete() {
+_macc_bashcomplete() {
     COMPREPLY=()
 }
 
@@ -60,21 +55,20 @@ EOT
 
 
     while (my ($c, $o) = each %command_map) {
-        print "_tvgu_$c() {\n    _compreply \"",
+        print "_macc_$c() {\n    _compreply \"",
             join(" ", map {"--" . $_->{name}} @$o),
                 "\"\n}\n\n";
     }
 
 
 print <<'EOT';
+
 _compreply() {
     COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
 }
 
 
-_startsiden_tvguide() {
-    local current previous completions
-    
+_macc() {
     case $COMP_CWORD in
         0)
             ;;
@@ -88,7 +82,7 @@ _startsiden_tvguide() {
 }
 
 
-complete -o default -F _startsiden_tvguide startsiden_tvguide
+complete -o default -F _macc macc
 
 EOT
 

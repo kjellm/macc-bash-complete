@@ -7,6 +7,8 @@ license  'perl';
 
 build_requires 'Test::More';
 
+requires 'MooseX::App::Cmd';
+
 auto_install;
 
 WriteAll;
