@@ -6,7 +6,10 @@ author   q{Kjell-Magne Øierud <kjellm@acm.org>};
 license  'perl';
 
 build_requires 'Test::More';
+build_requires 'Test::Output';
 
+requires 'List::MoreUtils';
+requires 'Moose';
 requires 'MooseX::App::Cmd';
 
 auto_install;
