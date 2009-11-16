@@ -23,7 +23,7 @@ $stdout =~ s/\s+/ /g;
 
 my $expected = q{#!/bin/bash
 # Built with MooseX::App::Cmd::Command::BashComplete;
-COMMANDS='help commands complete bashcomplete testcommand'
+COMMANDS='help commands bashcomplete testcommand'
 _macc_help() {
     if [ $COMP_CWORD = 2 ]; then
         _compreply "$COMMANDS"
@@ -36,9 +36,6 @@ _macc_commands() {
 }
 _macc_bashcomplete() {
     COMPREPLY=()
-}
-_macc_bashcomplete() {
-    _compreply ""
 }
 _macc_testcommand() {
     _compreply "--foo"
@@ -54,10 +51,10 @@ _macc() {
             _compreply "$COMMANDS"
             ;;
         *)
-            eval _tvgu_${COMP_WORDS[1]}
+            eval _macc_${COMP_WORDS[1]}
     esac
 }
-complete -o default -F _macc macc
+complete -o default -F _macc main.t
 };
 
 $expected =~ s/\s+/ /g;
