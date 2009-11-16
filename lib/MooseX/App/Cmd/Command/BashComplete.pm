@@ -35,7 +35,7 @@ COMMANDS='help commands complete $cmd_list'
 
 _macc_help() {
     if [ \$COMP_CWORD = 2 ]; then
-        _compreply "\$GLOBAL_COMMANDS \$COMMANDS"
+        _compreply "\$COMMANDS"
     else
         COMPREPLY=()
     fi
@@ -52,7 +52,6 @@ _macc_bashcomplete() {
 
 
 EOT
-
 
     while (my ($c, $o) = each %command_map) {
         print "_macc_$c() {\n    _compreply \"",
@@ -73,7 +72,7 @@ _macc() {
         0)
             ;;
         1)
-            _compreply "$GLOBAL_COMMANDS $COMMANDS"
+            _compreply "$COMMANDS"
             ;;
         *)
             eval _tvgu_${COMP_WORDS[1]}
