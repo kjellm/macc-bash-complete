@@ -8,3 +8,4 @@ pm_to_blib*
 .lwpcookies
 MooseX-App-Cmd-Command-BashComplete-*
 cover_db
+inc
