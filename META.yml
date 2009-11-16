@@ -1,5 +1,5 @@
 ---
-abstract: 'The great new MooseX::App::Cmd::Command::BashComplete!'
+abstract: 'Bash completion for your MooseX::App::Cmd programs.'
 author:
   - 'Kjell-Magne Øierud <kjellm@acm.org>'
 build_requires:
@@ -20,7 +20,6 @@ no_index:
     - inc
     - t
 requires:
-  List::MoreUtils: 0
   Moose: 0
   MooseX::App::Cmd: 0
 resources:

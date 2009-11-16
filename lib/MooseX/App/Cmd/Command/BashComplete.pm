@@ -4,27 +4,23 @@ extends 'MooseX::App::Cmd::Command';
 
 our $VERSION = '0.01';
 
-use List::MoreUtils qw(any none);
 use MooseX::Getopt;
 
 sub execute {
     my ($self, $opts, $args) = @_;
 
-    my @commands = $self->app->command_names;
+    my @commands = grep {
+        !/bashcomplete|-h|--help|-\?|help|commands/
+    } $self->app->command_names;
 
     my %command_map = ();
-
     for my $cmd (@commands) {
-        next if any { $cmd eq $_ } qw(bashcomplete -h --help -? help commands);
-        my $plugin = $self->app->plugin_for($cmd);
-
-        $command_map{$cmd} = [$plugin->_attrs_to_options()];
-
+        $command_map{$cmd} 
+            = [$self->app->plugin_for($cmd)->_attrs_to_options()];
     }
 
-    my $cmd_list = join ' ', keys %command_map;
-
-    my $package = __PACKAGE__;
+    my $cmd_list = join ' ', @commands;
+    my $package  = __PACKAGE__;
 
     print <<"EOT";
 #!/bin/bash
@@ -45,11 +41,9 @@ _macc_commands() {
     COMPREPLY=()
 }
 
-
 _macc_bashcomplete() {
     COMPREPLY=()
 }
-
 
 EOT
 
@@ -66,7 +60,6 @@ _compreply() {
     COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
 }
 
-
 _macc() {
     case $COMP_CWORD in
         0)
@@ -80,13 +73,9 @@ _macc() {
     esac
 }
 
-
 EOT
 
-
     print "complete -o default -F _macc ", $self->app->arg0, "\n";
-
-
 }
 
 
