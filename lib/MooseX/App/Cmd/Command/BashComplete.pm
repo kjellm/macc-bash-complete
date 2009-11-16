@@ -93,7 +93,7 @@ __END__
 
 =head1 NAME
 
-MooseX::App::Cmd::Command::BashComplete - The great new MooseX::App::Cmd::Command::BashComplete!
+MooseX::App::Cmd::Command::BashComplete - Bash completion for your MooseX::App::Cmd programs.
 
 
 =head1 VERSION
@@ -103,10 +103,14 @@ Version 0.01
 
 =head1 SYNOPSIS
 
-package MyApp::Command::BashComplete;
-use Moose;
-extends 'MooseX::App::Cmd::Command::BashComplete';
+ package MyApp::Command::BashComplete;
+ use Moose;
+ extends 'MooseX::App::Cmd::Command::BashComplete';
 
+ ...
+
+ bash> myapp bashcomplete > myapp-complete.sh
+ bash> source myapp-complete.sh
 
 =head1 AUTHOR
 
