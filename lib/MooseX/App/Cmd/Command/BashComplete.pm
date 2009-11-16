@@ -75,7 +75,7 @@ _macc() {
             _compreply "$COMMANDS"
             ;;
         *)
-            eval _tvgu_${COMP_WORDS[1]}
+            eval _macc_${COMP_WORDS[1]}
             
     esac
 }
