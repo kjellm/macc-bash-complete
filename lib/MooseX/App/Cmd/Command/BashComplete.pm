@@ -81,9 +81,11 @@ _macc() {
 }
 
 
-complete -o default -F _macc macc
-
 EOT
+
+
+    print "complete -o default -F _macc ", $self->app->arg0, "\n";
+
 
 }
 
