@@ -15,7 +15,7 @@ sub execute {
     my %command_map = ();
 
     for my $cmd (@commands) {
-        next if any { $cmd eq $_ } qw(complete -h --help -? help commands);
+        next if any { $cmd eq $_ } qw(bashcomplete -h --help -? help commands);
         my $plugin = $self->app->plugin_for($cmd);
 
         $command_map{$cmd} = [$plugin->_attrs_to_options()];
@@ -31,7 +31,7 @@ sub execute {
 
 # Built with $package;
 
-COMMANDS='help commands complete $cmd_list'
+COMMANDS='help commands bashcomplete $cmd_list'
 
 _macc_help() {
     if [ \$COMP_CWORD = 2 ]; then
