@@ -1,15 +1,7 @@
 MooseX-App-Cmd-Command-BashComplete
 
-The README is used to introduce the module and provide instructions on
-how to install the module, any machine dependencies it may have (for
-example C compilers and installed libraries) and any other information
-that should be provided before the module is installed.
-
-A README file is required for CPAN modules since CPAN extracts the README
-file from a module distribution so that people browsing the archive
-can use it to get an idea of the module's uses. It is usually a good idea
-to provide version information here so that people can decide whether
-fixes for the module are worth downloading.
+This module makes it easy to get bash completion for your
+MooseX::App::Cmd programs.
 
 
 INSTALLATION
@@ -21,26 +13,13 @@ To install this module, run the following commands:
 	make test
 	make install
 
+
 SUPPORT AND DOCUMENTATION
 
 After installing, you can find documentation for this module with the
 perldoc command.
 
     perldoc MooseX::App::Cmd::Command::BashComplete
-
-You can also look for information at:
-
-    RT, CPAN's request tracker
-        http://rt.cpan.org/NoAuth/Bugs.html?Dist=MooseX-App-Cmd-Command-BashComplete
-
-    AnnoCPAN, Annotated CPAN documentation
-        http://annocpan.org/dist/MooseX-App-Cmd-Command-BashComplete
-
-    CPAN Ratings
-        http://cpanratings.perl.org/d/MooseX-App-Cmd-Command-BashComplete
-
-    Search CPAN
-        http://search.cpan.org/dist/MooseX-App-Cmd-Command-BashComplete/
 
 
 COPYRIGHT AND LICENCE
@@ -52,4 +31,3 @@ under the terms of either: the GNU General Public License as published
 by the Free Software Foundation; or the Artistic License.
 
 See http://dev.perl.org/licenses/ for more information.
-
