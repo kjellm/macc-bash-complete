@@ -9,7 +9,7 @@ build_requires 'Test::More';
 build_requires 'Test::Output';
 
 requires 'Moose';
-requires 'MooseX::App::Cmd';
+requires 'MooseX::App::Cmd' => '0.06';
 
 auto_install;
 

@@ -21,7 +21,7 @@ no_index:
     - t
 requires:
   Moose: 0
-  MooseX::App::Cmd: 0
+  MooseX::App::Cmd: 0.06
 resources:
   license: http://dev.perl.org/licenses/
 version: 0.01

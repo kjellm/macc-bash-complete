@@ -100,8 +100,18 @@ Version 0.01
 
  ...
 
- bash> myapp bashcomplete > myapp-complete.sh
- bash> source myapp-complete.sh
+ bash$ myapp bashcomplete > myapp-complete.sh
+ bash$ source myapp-complete.sh
+
+=head1 DESCRIPTION
+
+This package provides you with a way for getting bash auto completion
+for your MooseX::App::Cmd programs. What you have to do is to add a
+module under the same namespace as the other MooseX::App::Cmd::Command
+modules that extends MooseX::App::Cmd::Command::BashComplete (See the
+synopsis). Doing so will give you a command that outputs a shell
+script to STDOUT. This script can be saved and then sourced by bash
+(again, see the synopsis).
 
 =head1 AUTHOR
 
