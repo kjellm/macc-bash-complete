@@ -38,7 +38,7 @@ _macc_bashcomplete() {
     COMPREPLY=()
 }
 _macc_testcommand() {
-    _compreply "--foo"
+    _compreply "--foo --help"
 }
 _compreply() {
     COMPREPLY=($(compgen -W "$1" -- ${COMP_WORDS[COMP_CWORD]}))
