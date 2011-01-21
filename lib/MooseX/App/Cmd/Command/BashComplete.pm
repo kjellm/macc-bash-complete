@@ -2,7 +2,7 @@ package MooseX::App::Cmd::Command::BashComplete;
 use Moose;
 extends 'MooseX::App::Cmd::Command';
 
-our $VERSION = '0.01';
+our $VERSION = '0.02';
 
 use MooseX::Getopt;
 

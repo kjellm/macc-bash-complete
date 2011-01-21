@@ -1,3 +1,6 @@
+0.02
+    - Fix broken test due to new MooseX::App::Cmd release
+
 0.01
     - First version.
 
