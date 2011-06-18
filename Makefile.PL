@@ -5,11 +5,12 @@ all_from 'lib/MooseX/App/Cmd/Command/BashComplete.pm';
 author   q{Kjell-Magne Øierud <kjellm@acm.org>};
 license  'perl';
 
-build_requires 'Test::More';
-build_requires 'Test::Output';
-
 requires 'Moose';
 requires 'MooseX::App::Cmd' => '0.06';
+
+test_requires 'Test::More';
+test_requires 'Test::Output';
+test_requires 'Test::Regression';
 
 auto_install;
 

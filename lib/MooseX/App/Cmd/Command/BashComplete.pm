@@ -2,7 +2,7 @@ package MooseX::App::Cmd::Command::BashComplete;
 use Moose;
 extends 'MooseX::App::Cmd::Command';
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 use MooseX::Getopt;
 
@@ -22,6 +22,7 @@ sub execute {
     my $cmd_list = join ' ', @commands;
     my $package  = __PACKAGE__;
     my $prefix = $self->app->arg0;
+    $prefix =~ tr/./_/;
 
     print <<"EOT";
 #!/bin/bash
@@ -32,7 +33,7 @@ ${prefix}_COMMANDS='help commands bashcomplete $cmd_list'
 
 _${prefix}_macc_help() {
     if [ \$COMP_CWORD = 2 ]; then
-        _compreply "\$${prefix}_COMMANDS"
+        _${prefix}_compreply "\$${prefix}_COMMANDS"
     else
         COMPREPLY=()
     fi
@@ -90,7 +91,7 @@ MooseX::App::Cmd::Command::BashComplete - Bash completion for your MooseX::App::
 
 =head1 VERSION
 
-Version 0.01
+Version 0.03
 
 
 =head1 SYNOPSIS
