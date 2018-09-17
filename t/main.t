@@ -11,9 +11,6 @@ use TestApp;
 
 my $app = TestApp->new;
 
-#    use Data::Dumper qw(Dumper);
-#     print STDERR Dumper sort $app->command_names;
-
 is_deeply(
     [sort($app->command_names)],
     [qw(--help --version -? -h bashcomplete commands help testcommand version)],
