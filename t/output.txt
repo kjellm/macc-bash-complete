@@ -38,7 +38,6 @@ _main_t_macc() {
             ;;
         *)
             eval _main_t_macc_${COMP_WORDS[1]}
-            
     esac
 }
 

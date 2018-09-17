@@ -13,7 +13,7 @@ my $app = TestApp->new;
 
 is_deeply(
     [sort($app->command_names)],
-    [qw(--help -? -h bashcomplete commands help testcommand)],
+    [qw(--help --version -? -h bashcomplete commands help testcommand version)],
     'Command names ok'
 );
 

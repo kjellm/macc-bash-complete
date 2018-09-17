@@ -1,5 +1,6 @@
 package MooseX::App::Cmd::Command::BashComplete;
 use Moose;
+use utf8;
 extends 'MooseX::App::Cmd::Command';
 
 our $VERSION = '0.04';
@@ -10,7 +11,7 @@ sub execute {
     my ($self, $opts, $args) = @_;
 
     my @commands = grep {
-        !/bashcomplete|-h|--help|-\?|help|commands/
+        !/bashcomplete|-h|--help|-\?|help|commands|version|--version/
     } $self->app->command_names;
 
     my %command_map = ();
@@ -71,7 +72,6 @@ _${prefix}_macc() {
             ;;
         *)
             eval _${prefix}_macc_\${COMP_WORDS[1]}
-            
     esac
 }
 
@@ -83,6 +83,8 @@ EOT
 
 1;
 __END__
+
+=encoding utf8
 
 =head1 NAME
 
